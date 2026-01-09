@@ -1,6 +1,7 @@
 import { WebSocketServer, WebSocket } from "ws";
 
-const wss = new WebSocketServer({ port: 8080 });
+const PORT = Number(process.env.PORT) || 8080;
+const wss = new WebSocketServer({ port: PORT });
 
 interface UserSession {
     roomID: string;
@@ -117,4 +118,4 @@ wss.on("connection", (socket: WebSocket) => {
     });
 });
 
-console.log("WebSocket Server running on ws://localhost:8080");
+console.log(`WebSocket Server running on port ${PORT}`);
